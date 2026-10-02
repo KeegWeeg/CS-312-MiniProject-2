@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joke Generator</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>Joke Generator</h1>
+
+    <form action="/joke" method="POST">
+      <input type="text" name="name" placeholder="Enter your name">
+    <button type="submit">Get Joke</button>
+    </form>
+
+  <% if (locals.error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+
+  <% if (locals.joke) { %>
+      <h2>Here's a joke for you <%= name %>:</h2>
+    <% if (joke.type == "single") { %>
+      <p><%= joke.joke %></p>
+    <% } else { %>
+        <p><%= joke.setup %></p>
+      <p><%= joke.delivery %></p>
+    <% } %>
+  <% } %>
+</div>
+</body>
+</html>
